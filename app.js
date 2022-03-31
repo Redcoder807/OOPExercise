@@ -6,7 +6,7 @@ const mulan = {
     // 1b
     quote: () => `Dishonor! Dishonor on your whole family!`,
     // 1c
-    storyline: function(){
+    storyline: function () {
       return `The movie ${this.title} is about ${this.main}`;
     }
   };
@@ -18,19 +18,19 @@ const mulan = {
     // 2b
     quote: () => `I can't believe I did this! I can't believe I did this! I have to go home! I am never going back! I'm a horrible daughter! BEST DAY EVER!`,
     // 2c
-    storyline: function(){
+    storyline: function () {
       return `The movie ${this.title} is about ${this.main}`;
     }
   };
   
   // 3a
-  function DisneyMovie(t, m){
+  function DisneyMovie(t, m) {
     this.title = t;
     this.main = m;
   }
   
   // 3b
-  DisneyMovie.prototype.storyline = function(){
+  DisneyMovie.prototype.storyline = function () {
     return `The movie ${this.title} is about ${this.main}`;
   }
   
@@ -43,17 +43,17 @@ const mulan = {
   console.log(tangled1); // DisneyMovie { title: 'Tangled', main: 'Rapunzel' }
   
   // 4a
-  class DM{
-    constructor(t, m){
+  class DM {
+    constructor(t, m) {
       this.title = t;
       this.main = m;
     }
     // 4b
-    storyline(){
+    storyline() {
       return `The movie ${this.title} is about ${this.main}`;
     }
     // 4e
-    static loveDisneyMovies(){
+    static loveDisneyMovies() {
       return `I Love Disney Movies!`;
     }
   }
@@ -74,10 +74,17 @@ const mulan = {
   // 5a
   class DMCast extends DM {
     // 5b
-    constructor(t, m, c){
+    constructor(t, m, c) {
       // 5c
       super(t, m);
       this.cast = c;
+    }
+    // BONUS
+    // 6a
+    static create(a, b, c) {
+      return new DMCast(a, b, c);
+      // Can also use the "this" keyword
+      // return new this(a, b, c);
     }
   }
   
@@ -133,3 +140,31 @@ const mulan = {
   }
   */
   console.log(rapunzel3.storyline()); // The movie Tangled is about Rapunzel
+  
+  // BONUS
+  // 6b
+  const moana = DMCast.create(
+    `Moana`,
+    `Moana of Motunui`,
+    {
+      moana: `Auli'i Cravalho`,
+      maui: `Dwayne Johnson`,
+      grammaTala: `Rachel House`,
+      chiefTui: `Temuera Morrison`
+    }
+  );
+  
+  // 6c
+  console.log(moana);
+  /*
+  DMCast {
+    title: 'Moana',
+    main: 'Moana of Motunui',
+    cast: {
+      moana: "Auli'i Cravalho",
+      maui: 'Dwayne Johnson',
+      grammaTala: 'Rachel House',
+      chiefTui: 'Temuera Morrison'
+    }
+  }
+  */
